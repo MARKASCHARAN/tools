@@ -1,15 +1,13 @@
-FROM node:23-alpine
+FROM python:3.9-ubuntu
 
-WORKDIR /app
+WORKDIR /backend
 
-RUN npm install -g pnpm
 
-COPY package.json pnpm-lock.yaml ./
+COPY requirements.txt 
 
-RUN pnpm install --frozen-lockfile
 
 COPY . .
 
 EXPOSE 3000
 
-CMD ["node", "index.js"]
+CMD ["python", "app.py"]
